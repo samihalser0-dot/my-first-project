@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my-first-project - لوحة التحكم</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🚀 my-first-project</h1>
+                <p class="subtitle">لوحة التحكم والإدارة</p>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li><a href="#home" class="nav-link active" data-section="home">الرئيسية</a></li>
+                <li><a href="#users" class="nav-link" data-section="users">المستخدمون</a></li>
+                <li><a href="#tools" class="nav-link" data-section="tools">الأدوات</a></li>
+                <li><a href="#stats" class="nav-link" data-section="stats">الإحصائيات</a></li>
+                <li><a href="#settings" class="nav-link" data-section="settings">الإعدادات</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Home Section -->
+            <section id="home" class="section active">
+                <div class="welcome-card">
+                    <h2>👋 أهلاً بك في my-first-project</h2>
+                    <p>مشروع Node.js متقدم مع واجهة مستخدم حديثة وسهلة الاستخدام</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <span class="feature-icon">👥</span>
+                            <h3>إدارة المستخدمين</h3>
+                            <p>إضافة وتعديل وحذف المستخدمين</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">🛠️</span>
+                            <h3>أدوات مفيدة</h3>
+                            <p>مجموعة من الأدوات والدوال المساعدة</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">📊</span>
+                            <h3>إحصائيات</h3>
+                            <p>عرض إحصائيات شاملة عن البيانات</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">⚙️</span>
+                            <h3>الإعدادات</h3>
+                            <p>تخصيص الإعدادات حسب احتياجاتك</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Users Section -->
+            <section id="users" class="section">
+                <div class="section-header">
+                    <h2>👥 إدارة المستخدمين</h2>
+                    <button class="btn btn-primary" id="addUserBtn">+ إضافة مستخدم جديد</button>
+                </div>
+
+                <!-- Add User Form -->
+                <div id="addUserForm" class="form-container hidden">
+                    <h3>إضافة مستخدم جديد</h3>
+                    <form id="userForm">
+                        <div class="form-group">
+                            <label for="userName">الاسم:</label>
+                            <input type="text" id="userName" placeholder="أدخل الاسم" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userEmail">البريد الإلكتروني:</label>
+                            <input type="email" id="userEmail" placeholder="البريد الإلكتروني" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userAge">العمر:</label>
+                            <input type="number" id="userAge" placeholder="العمر" min="0" max="150">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">حفظ</button>
+                            <button type="button" class="btn btn-secondary" id="cancelBtn">إلغاء</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Users List -->
+                <div class="users-list" id="usersList">
+                    <p class="empty-state">لا يوجد مستخدمون. أضف مستخدماً جديداً!</p>
+                </div>
+            </section>
+
+            <!-- Tools Section -->
+            <section id="tools" class="section">
+                <div class="section-header">
+                    <h2>🛠️ الأدوات والدوال المساعدة</h2>
+                </div>
+
+                <div class="tools-grid">
+                    <!-- Text Capitalize Tool -->
+                    <div class="tool-card">
+                        <h3>📝 رفع الحرف الأول</h3>
+                        <input type="text" id="capitalizeInput" placeholder="أدخل نصاً">
+                        <button class="btn btn-secondary" id="capitalizeBtn">تطبيق</button>
+                        <div id="capitalizeResult" class="result hidden">
+                            النتيجة: <span id="capitalizeOutput"></span>
+                        </div>
+                    </div>
+
+                    <!-- Random Number Tool -->
+                    <div class="tool-card">
+                        <h3>🎲 رقم عشوائي</h3>
+                        <div class="input-group">
+                            <input type="number" id="minNum" placeholder="من" value="1" min="0">
+                            <input type="number" id="maxNum" placeholder="إلى" value="100" min="0">
+                        </div>
+                        <button class="btn btn-secondary" id="randomBtn">توليد</button>
+                        <div id="randomResult" class="result hidden">
+                            الرقم العشوائي: <span id="randomOutput"></span>
+                        </div>
+                    </div>
+
+                    <!-- Text Length Tool -->
+                    <div class="tool-card">
+                        <h3>📏 طول النص</h3>
+                        <input type="text" id="lengthInput" placeholder="أدخل نصاً">
+                        <button class="btn btn-secondary" id="lengthBtn">حساب</button>
+                        <div id="lengthResult" class="result hidden">
+                            الطول: <span id="lengthOutput"></span> أحرف
+                        </div>
+                    </div>
+
+                    <!-- Text Reverse Tool -->
+                    <div class="tool-card">
+                        <h3>🔄 عكس النص</h3>
+                        <input type="text" id="reverseInput" placeholder="أدخل نصاً">
+                        <button class="btn btn-secondary" id="reverseBtn">عكس</button>
+                        <div id="reverseResult" class="result hidden">
+                            النتيجة: <span id="reverseOutput"></span>
+                        </div>
+                    </div>
+
+                    <!-- Text to Uppercase -->
+                    <div class="tool-card">
+                        <h3>🔤 تحويل لأحرف كبيرة</h3>
+                        <input type="text" id="uppercaseInput" placeholder="أدخل نصاً">
+                        <button class="btn btn-secondary" id="uppercaseBtn">تحويل</button>
+                        <div id="uppercaseResult" class="result hidden">
+                            النتيجة: <span id="uppercaseOutput"></span>
+                        </div>
+                    </div>
+
+                    <!-- Text to Lowercase -->
+                    <div class="tool-card">
+                        <h3>🔡 تحويل لأحرف صغيرة</h3>
+                        <input type="text" id="lowercaseInput" placeholder="أدخل نصاً">
+                        <button class="btn btn-secondary" id="lowercaseBtn">تحويل</button>
+                        <div id="lowercaseResult" class="result hidden">
+                            النتيجة: <span id="lowercaseOutput"></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section id="stats" class="section">
+                <div class="section-header">
+                    <h2>📊 الإحصائيات</h2>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <h3>إجمالي المستخدمين</h3>
+                            <p class="stat-value" id="totalUsers">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <h3>المستخدمون النشطون</h3>
+                            <p class="stat-value" id="activeUsers">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-info">
+                            <h3>متوسط العمر</h3>
+                            <p class="stat-value" id="avgAge">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">⏰</div>
+                        <div class="stat-info">
+                            <h3>الوقت الحالي</h3>
+                            <p class="stat-value" id="currentTime">--:--:--</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3>توزيع المستخدمين</h3>
+                    <div id="userChart" class="chart">
+                        <p>سيتم عرض الإحصائيات عند إضافة مستخدمين</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="section">
+                <div class="section-header">
+                    <h2>⚙️ الإعدادات</h2>
+                </div>
+
+                <div class="settings-container">
+                    <div class="setting-group">
+                        <h3>🎨 المظهر</h3>
+                        <label class="setting-item">
+                            <input type="checkbox" id="darkMode">
+                            الوضع الليلي
+                        </label>
+                        <label class="setting-item">
+                            <input type="checkbox" id="notifications" checked>
+                            تفعيل الإخطارات
+                        </label>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3>🌐 اللغة</h3>
+                        <select id="languageSelect">
+                            <option value="ar" selected>العربية</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3>💾 البيانات</h3>
+                        <button class="btn btn-secondary" id="exportBtn">تصدير البيانات</button>
+                        <button class="btn btn-danger" id="clearBtn">حذف كل البيانات</button>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3>ℹ️ معلومات التطبيق</h3>
+                        <p><strong>الإصدار:</strong> 1.0.0</p>
+                        <p><strong>المطور:</strong> samihalser0-dot</p>
+                        <p><strong>الترخيص:</strong> MIT</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 my-first-project. جميع الحقوق محفوظة.</p>
+            <p>صُنع بـ ❤️ باستخدام Node.js و JavaScript</p>
+        </footer>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification hidden"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
